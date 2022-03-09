@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Worse Wordle</title>
+        <style>
+            body {
+                background-color: #2b2626;
+            }
+            
+            h1 {
+             font-family: monospace;
+             font-size: 5em;
+             color: whitesmoke;
+            }
+
+            input, button{
+                font-size: 6em;
+            }
+
+            .wrongletter {
+                background-color:#444444;
+            };
+            
+            .correctletter {
+                background-color:#d9ff2d; 
+            };
+
+            .correctplace {
+                background-color:green;
+            };
+        </style>
+    </head>
+    <body>
+        <h1>
+            Play the word game
+
+        </h1>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script>
+
+            //establish global variables            
+            var answer = "apple";
+            var guess = "";
+            var attempt = 1;
+
+            //create guess boxes
+            for (var i = 1; i <= 6; i++) {
+                var newForm = $("<form id = 'guess" + i + "' >");
+                newForm.html(
+                "<input id = '" + i + "1' type='text' size='1' value = '' maxlength = '0'>" +
+                "<input id = '" + i + "2' type='text' size='1' value = '' maxlength = '0'>" +
+                "<input id = '" + i + "3' type='text' size='1' value = '' maxlength = '0'>" +
+                "<input id = '" + i + "4' type='text' size='1' value = '' maxlength = '0'>" +
+                "<input id = '" + i + "5' type='text' size='1' value = '' maxlength = '0'>" +
+                "<button type='submit'>Check</button>"
+                );
+                $("body").append(newForm);  
+            }
+
+            //functions for disabling and enabling rows of guesses
+            activateRow = function(r){
+                for (var i = 1; i <= 5; i++) {
+                    $("#" + r + i).attr("maxlength", 1);
+                };
+            }
+
+            deactivateRow = function(r){
+                for (var i = 1; i <= 5; i++) {
+                    $("#" + r + i).attr("maxlength", 0);
+                };
+            }
+
+            activateRow(attempt);
+
+            //when the user submits their guess
+            $("form").submit(function(event){
+                event.preventDefault();
+
+                //add all of the letters guessed into one word
+                for (var i = 1; i <= 5; i++) {
+
+                    var $guess = $("#" + attempt + i);
+
+                    if ($guess.val() == "") {
+                        return;
+                    }
+                    console.log(answer.charAt(i - 1));
+                    console.log("guess letter " + $guess.val());
+                    console.log($guess.val() === answer.charAt(i - 1));
+                    if ($guess.val() === answer.charAt(i - 1)) {
+                        console.log("attempting to add class to:" + "#" + attempt + i + " beep boop");
+                        $("#" + attempt + i).addClass("correctplace");
+                    }
+
+                    guess += $guess.val();
+                };
+
+                console.log(guess);
+
+                if (guess == answer) {
+                    $("body").html("Let's go");
+                } else {
+                    console.log("oh no");
+
+                }
+
+                guess = "";
+
+                attempt++;
+
+                activateRow(attempt);
+
+                deactivateRow(attempt - 1);
+
+                console.log(attempt);
+            });
+        </script>
+    </body>
+</html>
