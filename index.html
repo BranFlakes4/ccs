@@ -2,120 +2,404 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Worse Wordle</title>
+        <title>Epic Crypto Information</title>
         <style>
             body {
-                background-color: #2b2626;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                background-color: black;
             }
-            
-            h1 {
-             font-family: monospace;
-             font-size: 5em;
-             color: whitesmoke;
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hidden {
+                display: none;
+            }
+            .part1 {
+                color:azure;
+                text-align: center;
+            }
+            .part2 {
+                color:azure;
+                text-align: center;
+            }
+            .part3 {
+                color:azure;
+                text-align: center;
+            }
+            #bitcoin1 {
+                width:100%
+            }
+            #bitcoin2 {
+                width:100%;
+                color:azure;
+                text-align: center;
+                font-size: 2.5em;
+                display: none;
+            }
+            #factsheader {
+                font-size: 4em;
+                display: none;
+            }
+            #factssubhead {
+                font-size: 2.5em;
+                display: none;
+            }
+            #factssubsubhead {
+                font-size: 2em;
+                display: none;
+            }
+            #info1 {
+                font-size: 1.25em;
+                display: none;
+            }
+            #reminder {
+                font-size: 1.25em;
+                display: none;
+            }
+            #info2 {
+                font-size: 1.25em;
+                display: none;
+            }
+            #info3 {
+                font-size: 1.25em;
+                display: none;
+            }
+            #disclaimer1 {
+                font-size: 0.75em;
+                display: none;
+            }
+            #info4 {
+                font-size: 1.25em;
+                display: none;
+            }
+            #info5 {
+                font-size: 1.25em;
+                display: none;
+            }
+            #proheader {
+                font-size: 4em;
+                display: none;
+            }
+            #prosubhead {
+                font-size: 2.5em;
+                display: none;
+            }
+            #prosubsubhead {
+                font-size: 2em;
+                display: none;
+            }
+            #pro1 {
+                font-size: 1.25em;
+                display: none;
+            }
+            #pro2 {
+                font-size: 1.25em;
+                display: none;
+            }
+            #pro3 {
+                font-size: 1.25em;
+                display: none;
+            }
+            #disclaimer2 {
+                font-size: 0.75em;
+                display: none;
+            }
+            #conheader {
+                font-size: 4em;
+                display: none;
+            }
+            #consubhead {
+                font-size: 2.5em;
+                display: none;
+            }
+            #consubsubhead {
+                font-size: 2em;
+                display: none;
+            }
+            #con1 {
+                font-size: 1.25em;
+                display: none;
+            }
+            #con2 {
+                font-size: 1.25em;
+                display: none;
+            }
+            #con3 {
+                font-size: 1.25em;
+                display: none;
+            }
+            #con4 {
+                font-size: 1.25em;
+                display: none;
+            }
+            #con5 {
+                font-size: 1.25em;
+                display: none;
+            }
+            #disclaimer3 {
+                font-size: 0.75em;
+                display: none;
             }
 
-            input, button{
-                font-size: 6em;
-            }
-
-            .wrongletter {
-                background-color:#444444;
-            };
-            
-            .correctletter {
-                background-color:#d9ff2d; 
-            };
-
-            .correctplace {
-                background-color:green;
-            };
         </style>
     </head>
     <body>
-        <h1>
-            Play the word game
+    
+        <div id="bitcoin1">
+            <img src="https://cdn.discordapp.com/attachments/710864824782946336/1012072773750886450/Bitcoin.svg.png" alt = "Bitcoin" class="center">
+        </div>
 
-        </h1>
+        <div id="factsheader" class="part1">
+            <p>
+               What the Heck is a Cryptocurrency
+            </p>
+        </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script>
+        <div id="factssubhead" class="part1">
+            <p>
+                You probably should know that before you try to click on one
+            </p>
+        </div>
 
-            //establish global variables            
-            var answer = "apple";
-            var guess = "";
-            var attempt = 1;
+        <div id="factssubsubhead" class="part1">
+            <p>
+                For real I'm still kinda mad you did that
+            </p>
+        </div>
 
-            //create guess boxes
-            for (var i = 1; i <= 6; i++) {
-                var newForm = $("<form id = 'guess" + i + "' >");
-                newForm.html(
-                "<input id = '" + i + "1' type='text' size='1' value = '' maxlength = '0'>" +
-                "<input id = '" + i + "2' type='text' size='1' value = '' maxlength = '0'>" +
-                "<input id = '" + i + "3' type='text' size='1' value = '' maxlength = '0'>" +
-                "<input id = '" + i + "4' type='text' size='1' value = '' maxlength = '0'>" +
-                "<input id = '" + i + "5' type='text' size='1' value = '' maxlength = '0'>" +
-                "<button type='submit'>Check</button>"
-                );
-                $("body").append(newForm);  
-            }
+        <div id="info1" class="part1">
+            <p>
+                Cryptocurrencies are digital currencies which are <strong>decentralized</strong>, meaning that an individual body, like a government, does not back them up.
+            </p>
+        </div>
 
-            //functions for disabling and enabling rows of guesses
-            activateRow = function(r){
-                for (var i = 1; i <= 5; i++) {
-                    $("#" + r + i).attr("maxlength", 1);
-                };
-            }
+        <div id="reminder" class="part1">
+            <p>
+                <em>Click to continue</em>
+            </p>
+        </div>
 
-            deactivateRow = function(r){
-                for (var i = 1; i <= 5; i++) {
-                    $("#" + r + i).attr("maxlength", 0);
-                };
-            }
+        <div id="info2" class="part1">
+            <p>
+                Like other currencies, their value is derived from an agreed upon idea of what they're worth, rather than anything intrinsic.
+            </p>
+        </div>
 
-            activateRow(attempt);
+        <div id="info3" class="part1">
+            <p>
+                Since they are decentralized, one main authority does not validate transactions. Rather, a collaborative computer network validates actions together. This is called the <strong>blockchain</strong>.
+                <b></b>
+                <img src="https://cdn.discordapp.com/attachments/710864824782946336/1012072482599096421/960x0.jpg" alt = "Blockchain" class="center" border="1"> 
+            </p>
+        </div>
 
-            //when the user submits their guess
-            $("form").submit(function(event){
-                event.preventDefault();
+        <div id="disclaimer1" class="part1">
+            <p>
+                <em>The blockchain doesn't really look like this. It doesn't look like anything, really. I just thought this looked cool.</em>
+            </p>
+        </div>
 
-                //add all of the letters guessed into one word
-                for (var i = 1; i <= 5; i++) {
+        <div id="info4" class="part1">
+            <p>
+                There are multiple different methods of validation, but they are extremely complicated. <a href="https://open.spotify.com/episode/3WoWLROKUo9N9I8qruD4pq?si=nCFVELoUSb62jbWCTACo2w">This podcast</a> goes into more depth on the individual methods used.
+            </p>
+        </div>
 
-                    var $guess = $("#" + attempt + i);
+        <div id="info5" class="part1">
+            <p>
+                In short, computers work together to solve complex equations in order to process transactions. This means it's hard to take down, but also very energy-intensive.
+            </p>
+        </div>
 
-                    if ($guess.val() == "") {
-                        return;
-                    }
-                    console.log(answer.charAt(i - 1));
-                    console.log("guess letter " + $guess.val());
-                    console.log($guess.val() === answer.charAt(i - 1));
-                    if ($guess.val() === answer.charAt(i - 1)) {
-                        console.log("attempting to add class to:" + "#" + attempt + i + " beep boop");
-                        $("#" + attempt + i).addClass("correctplace");
-                    }
+        <div id="proheader" class="part2">
+            <p>
+                Why This is Cool
+            </p>
+        </div>
 
-                    guess += $guess.val();
-                };
+        <div id="prosubhead" class="part2">
+            <p>
+                I mean it's not that cool
+            </p>
+        </div>
 
-                console.log(guess);
+        <div id="prosubsubhead" class="part2">
+            <p>
+                But let's play devil's advocate for a second, ok?
+            </p>
+        </div>
 
-                if (guess == answer) {
-                    $("body").html("Let's go");
-                } else {
-                    console.log("oh no");
+        <div id="pro1" class="part2">
+            <p>
+                There is something to be said for the value of decoupling money from government control. Governments can be corrupt, and they do not always coin money effectively or responsibly.
+            </p>
+        </div>
 
-                }
+        <div id="pro2" class="part2">
+            <p>
+                Additionally, some individuals are in situations where, for their own safety, they need to use a more private method of payment.
+            </p>
+        </div>
 
-                guess = "";
+        <div id="pro3" class="part2">
+            <p>
+                Some would argue it can also diversify an investment portfolio, which I hear is a good thing or whatever.
+            </p>
+        </div>
 
-                attempt++;
+        <div id="disclaimer2" class="part2">
+            <p>
+                <img src="https://cdn.discordapp.com/attachments/710864824782946336/1012072474160156812/1960x0.jpg" alt = "Bitcoin Line Goes Up" class="center" border="1"> 
+                <em>Look! The line is going up! Isn't that super epic?</em>
+            </p>
+        </div>
 
-                activateRow(attempt);
+        <div id="conheader" class="part3">
+            <p>
+                Why This is Not That Cool
+            </p>
+        </div>
 
-                deactivateRow(attempt - 1);
+        <div id="consubhead" class="part3">
+            <p>
+                Aw yeah this is the real stuff now
+            </p>
+        </div>
 
-                console.log(attempt);
-            });
-        </script>
+        <div id="consubsubhead" class="part3">
+            <p>
+                I have some opinions, believe it or not
+            </p>
+        </div>
+
+        <div id="con1" class="part3">
+            <p>
+                The main issue is, of course, the absurd energy consumption. Despite being a very small market at the moment, Bitcoin alone has the energy consumption of a small country.
+            </p>
+        </div>
+
+        <div id="con2" class="part3">
+            <p>
+                Considering that the damage we've done to our planet's climate is already irreparable, I'd argue that maybe we dont need to keep pumping CO2 into the atmosphere.
+            </p>
+        </div>
+
+        <div id="con3" class="part3">
+            <p>
+                Many proponents of crypto pedal it as a sort of "get rich quick" scheme. However, due to the very high cost of entry, crypto does nothing but exaggerate already existing wealth disparities.
+            </p>
+        </div>
+
+        <div id="con4" class="part3">
+            <p>
+                Also, the market is very unregulated by design. Therefore, scams run rampant, and very little actual purchasing is done with cryptocurrencies.
+            </p>
+        </div>
+
+        <div id="con5" class="part3">
+            <p>
+                Also I think the mere existence of NFTs is worth burning down the entire infrastructure immediately.
+            </p>
+        </div>
+
+        <div id="disclaimer3" class="part3">
+            <p>
+                <img src="https://cdn.discordapp.com/attachments/710864824782946336/1012072469181517834/1A805E40-041A-4047-A623-E30BE1FA4082-1024x341.jpeg" alt = "Bored Ape Logo next to Waffen SS Logo" class="center" border="1"> 
+                <em>I mean look at this. This is at least a little bit odd.</em>
+            </p>
+        </div>
+
+        <div id="bitcoin2">
+            <a href="https://www.youtube.com/watch?v=YRw522To5aU&t=265s">
+            <img src="Bitcoin.svg.png" alt = "Bitcoin" class="center">
+            </a>
+            Are you sure you want to click it again?
+        </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            var audioElement = document.createElement('audio');
+            audioElement.setAttribute('src', 'scream.mp3');
+            audioElement.addEventListener('ended', function(){
+                this.play();
+            }, false);
+        })
+        $("#bitcoin1").click(function(){
+            alert('You are mad cringe');
+            $("#bitcoin1").fadeOut();
+            $("#factsheader").delay(3000).fadeIn();
+            $("#factssubhead").delay(5000).fadeIn();
+            $("#factssubsubhead").delay(7000).fadeIn();
+            $("#info1").delay(10000).fadeIn();
+            $("#reminder").delay(14000).fadeIn();
+        });
+        $("#reminder").click(function() {
+            $("#reminder").fadeOut();            
+            $("#info2").delay(1000).fadeIn();
+        });
+        $("#info2").click(function() {           
+            $("#info3").fadeIn();
+        });
+        $("#info3").click(function() {           
+            $("#disclaimer1").fadeIn();
+            $("#info4").delay(2000).fadeIn()
+        });
+        $("#info4").click(function() {           
+            $("#info5").fadeIn()
+        });
+        $("#info5").click(function() {           
+            $(".part1").fadeOut();
+            $("#proheader").delay(3000).fadeIn();
+            $("#prosubhead").delay(5000).fadeIn();
+            $("#prosubsubhead").delay(7000).fadeIn();
+            $("#pro1").delay(10000).fadeIn();
+        });
+        $("#pro1").click(function() {           
+            $("#pro2").fadeIn();
+        });
+        $("#pro2").click(function() {           
+            $("#pro3").fadeIn()
+        });
+        $("#pro3").click(function() {           
+            $("#disclaimer2").fadeIn()
+        });
+        $("#disclaimer2").click(function() {           
+            $(".part2").fadeOut()
+        });
+        $("#disclaimer2").click(function() {           
+            $(".part2").fadeOut();
+            $("#conheader").delay(3000).fadeIn();
+            $("#consubhead").delay(5000).fadeIn();
+            $("#consubsubhead").delay(7000).fadeIn();
+            $("#con1").delay(10000).fadeIn();
+        });
+        $("#con1").click(function() {           
+            $("#con2").fadeIn()
+        });
+        $("#con2").click(function() {           
+            $("#con3").fadeIn()
+        });
+        $("#con3").click(function() {           
+            $("#con4").fadeIn()
+        });
+        $("#con4").click(function() {           
+            $("#con5").fadeIn()
+        });
+        $("#con5").click(function() {           
+            $("#con6").fadeIn()
+        });
+        $("#con5").click(function() {           
+            $("#disclaimer3").fadeIn()
+        });
+        $("#disclaimer3").click(function() {           
+            $(".part3").fadeOut()
+            $("#bitcoin2").delay(3000).fadeIn()
+        });         
+
+    </script>
     </body>
 </html>
